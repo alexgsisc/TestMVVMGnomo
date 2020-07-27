@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "231943666535",
+    "firebase_url": "https://apignomo.firebaseio.com",
+    "project_id": "apignomo",
+    "storage_bucket": "apignomo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:231943666535:android:7f0c893fe0a00f667d8dc2",
+        "android_client_info": {
+          "package_name": "com.alexisgs.apignomo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "231943666535-t22rvmk3o6s1dk4kdnmbhv2tj8r2dqt3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAH2yT8sh5zZwijquv8OkEGtfzNvNxirmM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "231943666535-t22rvmk3o6s1dk4kdnmbhv2tj8r2dqt3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

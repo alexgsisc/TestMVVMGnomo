@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">ApiGnomo</string>
+
+    <string name="age_user">Edad: %1$s Años</string>
+    <string name="hint_search">Name or Profession</string>
+    <string name="title_friends">Amigos o Amigas</string>
+    <string name="title_profession">Profeciones</string>
+    <string name="msg_token_fmt">Token: %1$s</string>
+    <string name="weight_user">Peso: %1$s Kg</string>
+    <string name="height_user">Altura: %1$s m</string>
+</resources>
