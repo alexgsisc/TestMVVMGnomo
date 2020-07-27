@@ -30,30 +30,38 @@ class CharactersFragment : Fragment(), AdapterOfCharacters.AdapterRecyclerView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel = ViewModelProvider(this).get(CharactersViewModel::class.java)
+        //viewModel.getListOfCharacters()
     }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
+
         Log.e(TAG, "Entro::::::::________::::::::::::::::")
 
         rv_characters.layoutManager = LinearLayoutManager(this!!.context)
 
-        progress_circular.visibility = View.VISIBLE
+        viewModel._progressSuccess.observe(this, Observer {
+            if (it) {
+                progress_circular.visibility = View.VISIBLE
+            } else {
+                progress_circular.visibility = View.GONE
+            }
+        })
 
 
-        val charactersObserver = Observer<List<Characters>> {
+        viewModel.listDataTemp.observe(this, Observer {
+
+            Log.e("Data:::", it.toString())
             recyclerviewAdapter = AdapterOfCharacters(
                 it,
                 this!!.context!!, this
             )
-            progress_circular?.visibility = View.GONE
+
             rv_characters?.adapter = recyclerviewAdapter
             recyclerviewAdapter!!.notifyDataSetChanged()
-        }
-
-        viewModel.getListOfCharactersLiveData().observe(this.activity!!, charactersObserver)
+        })
 
     }
 

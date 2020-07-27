@@ -11,37 +11,32 @@ import rx.schedulers.Schedulers
 
 class CharactersViewModel : ViewModel() {
 
-    val sets = mutableSetOf<String>()
-
     private val charactersInteraction = CharactersInteraction()
     private val listData = MutableLiveData<List<Characters>>()
-    /*init {
+    val listDataTemp: LiveData<List<Characters>> get() = listData
+    private val progressSuccess = MutableLiveData<Boolean>()
+    val _progressSuccess: LiveData<Boolean> get() = progressSuccess
+
+    init {
         getListOfCharacters()
-    }*/
+    }
+
 
     private fun setListData(listOfCharacters: List<Characters>) {
+        progressSuccess.value = false
         listData.value = listOfCharacters
     }
 
-    private fun getListOfCharacters() {
+    fun getListOfCharacters() {
+        progressSuccess.value = true
         charactersInteraction.getListOfCharacters()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnError { Log.e(":::::::", "ABC ${it.message}") }
             .subscribe {
                 setListData(it.characters)
-                /*it.characters.forEach {
-                    sets.add(it.hair_color)
-                }
-                Log.e("COLORS:::", sets.toString())*/
             }
 
-        //setListData(charactersInteraction.getListOfCharacters())
-    }
-
-    fun getListOfCharactersLiveData(): LiveData<List<Characters>> {
-        getListOfCharacters()
-        return listData
     }
 
 }
